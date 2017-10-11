@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"./myLib"
+)
 
 func plus(a int, b int) int {
 	return a+b
@@ -11,9 +15,19 @@ func main() {
 	fmt.Println("1.1 + 1.2 = ", 1.1+1.2)
 
 	var a string = "I am a string"
-	fmt.Println(a)
+	fmt.Println("var a = " + a)
 
-	fmt.Println(plus(1, 2))
+	fmt.Println("function calling test : " + strconv.Itoa(plus(1, 2))) // also convert int to string
+
+	lines := myLib.StringToLines(`
+		line1
+		line2
+		line3
+	`)
+	fmt.Println("String2Lines : ", lines)
+
+	lines = myLib.File2Lines("./myLib/Files2Lines.txt")
+	fmt.Println("File2Lines : ", lines)
 
 	for i := 1; i <= 10; i++ {
 		if i == 1 {
@@ -22,5 +36,4 @@ func main() {
 
 		fmt.Println(i);
 	}
-
 }
